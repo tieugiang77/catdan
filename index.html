@@ -1,0 +1,1123 @@
+﻿
+<html lang="vi">
+    <head>   
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">     
+        <link href="./assets/bootstrap.min.css" rel="stylesheet" media="all" />
+        <link href="./assets/main.css" rel="stylesheet" media="all" />
+        <link href="./assets/jquery-ui-1.12.1.min.css" rel="stylesheet" media="all" />
+        <script src="./assets/jquery-3.3.1.min.js"></script>
+        <script src="./assets/jquery-ui-1.12.1.min.js"></script>
+        <script src="./assets/jquery-countdown.min.js"></script>
+        <script src="./assets/lodash.min.js"></script>
+        <script src="./assets/moment.min.js"></script>
+        <script src="./assets/moment-timezone-with-data.min.js"></script>
+        <script src="./assets/xs.js?v=123"></script>      
+    </head>
+    <body>	
+        <div class="clear"></div>
+        <div class="container">
+            <div class="col-lg-12">
+                <div
+                    class="block-wrapper page-single block-note"
+                    style="width: 100%; margin-bottom: 5px"
+                >					
+<div class="block-wrapper page-single block-note" style="width:100%;margin-bottom:5px;" >Tạo mức số, hỗ trợ tạo dàn đặc biệt, dàn 3D, 4D</div>
+<div class="clear"></div>
+                            <div class="time-display"></div>
+            <div class="row body-box-wrapper">
+                <div class="col-lg-12">
+                    <h2 class="header-list-index" id="tms">
+                        <span class="title-list-index">Tạo mức số - Lọc dàn 2D</span>
+                    </h2>
+                    <div class="box-wrapper block-wrapper">
+                        <div class="tms-box">
+                            <div class="col-12">
+                                <div class="col-6 title-group-top">
+                                    <input
+                                        class="btn3d"
+                                        name="tms_btn_rand"
+                                        value="Tạo ngẫu nhiên"
+                                        id="tms_btn_rand"
+                                        type="submit"
+                                        onclick="rand()"
+                                        title="Hãy thử xem bạn may mắn tới đâu :)"
+                                    />
+                                    <input
+                                        class="box-input"
+                                        name="tms_total_num"
+                                        value="86"
+                                        id="tms_total_num"
+                                        type="number"
+                                    />số
+                                </div>
+                                <div class="col-6 float-right">
+                                    <div class="tms-box-button-group">
+                                        <input
+                                            class="btn3d"
+                                            name="tms_btn_tms_1d"
+                                            value="Tạo mức 1D"
+                                            id="tms_btn_tms_1d"
+                                            type="submit"
+                                            onclick="taoMuc1()"
+                                        />
+                                        <input
+                                            class="btn3d"
+                                            name="tms_btn_tms_2d"
+                                            value="Tạo mức 2D"
+                                            id="tms_btn_tms_2d"
+                                            type="submit"
+                                            onclick="taoMuc2()"
+                                        />
+                                        <input
+                                            class="btn3d"
+                                            name="tms_btn_tms_3d"
+                                            value="Tạo mức 3-4D"
+                                            id="tms_btn_tms_3d"
+                                            type="submit"
+                                            onclick="taoMuc34()"
+                                        />
+                                        <input
+                                            class="btn3d"
+                                            name="tms_btn_lay_2d"
+                                            value="Lấy dàn 2D"
+                                            id="tms_btn_lay_2d"
+                                            type="submit"
+                                            onclick="layDan2D()"
+                                        />
+                                        <input
+                                            class="btn3d"
+                                            name="tms_btn_xoa"
+                                            value="Xóa"
+                                            id="tms_btn_xoa"
+                                            type="submit"
+                                            onclick="document.getElementById('tms_txt_outputcount').hidden = true;document.getElementById('tms_txt_input').value ='';document.getElementById('tms_txt_output').value =''"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="col-6">
+                                    <textarea
+                                        class="block-note tms-txt-area"
+                                        name="tms_txt_input"
+                                        id="tms_txt_input"
+                                        placeholder="Nhập các dàn 2-3-4D hoặc bấm &#39;Tạo ngẫu nhiên&#39;"
+                                    ></textarea>
+                                </div>
+                                <div class="col-6 txt-container">
+                                    <textarea
+                                        class="block-note tms-txt-area"
+                                        name="tms_txt_output"
+                                        id="tms_txt_output"
+                                        placeholder="Tạo mức 1D: Tạo mức số cho các dàn càng
+Tạo mức 2D: Tạo mức số cho các dàn 2D (các cặp số có thể viết gộp lại, ví dụ 12,21 = 121)
+Tạo mức 3-4D: Tạo mức số cho các dàn 3-4D
+Lấy dàn 2D: Lấy dàn đuôi 2D từ các dàn 2-3-4D"
+                                    ></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row body-box-wrapper">
+                <div class="col-lg-12">
+                    <h2 class="header-list-index">
+                        <span class="title-list-index">Tách dàn</span>
+                    </h2>
+                    <div class="box-wrapper block-wrapper">
+                        <div class="tms-box">
+                            <div class="col-12">
+                                <div class="col-6 title-group-top">
+                                    <input
+                                        class="btn3d"
+                                        name="split_btn_rand"
+                                        value="Tách ngẫu nhiên"
+                                        id="split_btn_rand"
+                                        type="submit"
+                                        onclick="rand_split()"
+                                    />
+                                    <input
+                                        class="box-input"
+                                        name="split_total_num"
+                                        value="10"
+                                        id="split_total_num"
+                                        type="number"
+                                    />số
+                                </div>
+                                <div class="col-6 float-right">
+                                    <div class="tms-box-button-group">
+                                        <input
+                                            class="btn3d"
+                                            name="split_btn_234d"
+                                            value="Tách 2-3-4D"
+                                            id="split_btn_234d"
+                                            type="submit"
+                                            onclick="split_234()"
+                                        />
+                                        <input
+                                            class="btn3d"
+                                            name="split_btn_ab"
+                                            value="Tách AB-BC-CD"
+                                            id="split_btn_ab"
+                                            type="submit"
+                                            onclick="split_ABCD()"
+                                        />
+                                        <input
+                                            class="btn3d"
+                                            name="split_btn_xoa"
+                                            value="Xóa"
+                                            id="split_btn_xoa"
+                                            type="submit"
+                                            onclick="document.getElementById('split_txt_input').value ='';document.getElementById('split_txt_output').value =''"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="col-6">
+                                    <textarea
+                                        class="block-note split-txt-area"
+                                        name="split_txt_input"
+                                        id="split_txt_input"
+                                        placeholder="Nhập dàn 2-3-4D"
+                                    ></textarea>
+                                </div>
+                                <div class="col-6 txt-container">
+                                    <textarea
+                                        class="block-note split-txt-area"
+                                        name="split_txt_output"
+                                        id="split_txt_output"
+                                        placeholder="Tách ngẫu nhiên: Tách dàn nhập vào thành 2 dàn ngẫu nhiên, trong đó 1 dàn có số số đúng như yêu cầu
+Tách 2-3-4D: Tách dàn nhập vào thành dàn 2D và càng 3D, 4D
+Tách AB-BC-CD: Tách từ dàn dạng ABCD hoặc BCD thành các dàn AB, BC, CD"
+                                    ></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row body-box-wrapper">
+                <div class="col-lg-12">
+                    <h2 class="header-list-index">
+                        <span class="title-list-index">Tạo dàn 3D - 4D</span>
+                    </h2>
+                    <div class="box-wrapper block-wrapper">
+                        <div class="tms-box">
+                            <div class="col-12">
+                                <div class="col-4 title-group-top">
+                                    <div class="col-6 bottom">3D</div>
+                                    <div class="col-6 float-right pad-left-5">2-3D</div>
+                                </div>
+                                <div class="col-8 float-right">
+                                    <div class="tms-box-button-group">
+                                        <input
+                                            class="btn3d"
+                                            name="td3d_btn_td"
+                                            value="Tạo dàn 3-4D"
+                                            id="td3d_btn_td"
+                                            type="submit"
+                                            onclick="join_34()"
+                                        />
+                                        <input
+                                            class="btn3d"
+                                            name="td3d_btn_ghep_2d"
+                                            value="Ghép AB x BC"
+                                            id="td3d_btn_ghep_2d"
+                                            type="submit"
+                                            onclick="join_AB()"
+                                        />
+                                        <input
+                                            class="btn3d"
+                                            name="td3d_btn_xoa"
+                                            value="Xóa"
+                                            id="td3d_btn_xoa"
+                                            type="submit"
+                                            onclick="document.getElementById('td3d_txt_outputcount').hidden = true;document.getElementById('td3d_cang_input').value ='0,1,2,3,4,5,6,7,8,9';document.getElementById('td3d_4cang_input').value ='';document.getElementById('td3d_txt_output').value ='';document.getElementById('td3d_dan_input').value ='';"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="col-4">
+                                    <div class="col-6">
+                                        <div class="col-12">
+                                            <textarea
+                                                class="block-note dan-3d-txt-area-half"
+                                                name="td3d_cang_input"
+                                                id="td3d_cang_input"
+                                                placeholder="Nhập càng 3D hoặc dàn AB"
+                                            >
+0,1,2,3,4,5,6,7,8,9</textarea
+                                            >
+                                        </div>
+                                        <div class="col-12">
+                                            <div style="margin-top: 5px">4D</div>
+                                            <textarea
+                                                class="block-note dan-3d-txt-area-half"
+                                                name="td3d_4cang_input"
+                                                id="td3d_4cang_input"
+                                                placeholder="Nhập càng 4D"
+                                            ></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <textarea
+                                            class="block-note dan-3d-txt-area-right"
+                                            name="td3d_dan_input"
+                                            id="td3d_dan_input"
+                                            placeholder="Nhập dàn 2D-3D hoặc dàn BC-BCD"
+                                        ></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-8 txt-container">
+                                    <textarea
+                                        class="block-note dan-3d-txt-area"
+                                        name="td3d_txt_output"
+                                        id="td3d_txt_output"
+                                        placeholder="Tạo dàn 3-4D: Tạo dàn 4D bằng cách ghép càng 4D + 3D và dàn 2D (nếu càng 4D bỏ trống thì sẽ ghép thành dàn 3D)
+Ghép AB x BC: Tạo dàn bằng cách ghép dàn 2D AB với dàn 2D BC (nếu dàn sau là dàn 3D BCD thì sẽ ghép thành dàn 4D)"
+                                    ></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row body-box-wrapper">
+                <div class="col-lg-12">
+                    <h2 class="header-list-index">
+                        <span class="title-list-index">Tạo dàn đặc biệt</span>
+                    </h2>
+                    <div class="box-wrapper block-wrapper">
+                        <div class="tms-box">
+                            <div class="col-12">
+                                <div class="col-4 title-group-top">
+                                    <div class="col-4">Đầu</div>
+                                    <div class="col-4 pad-left-5">Đuôi</div>
+                                    <div class="col-4 pad-left-5">Tổng</div>
+                                </div>
+                                <div class="col-8 float-right">
+                                    <div class="tms-box-button-group">
+                                        <input
+                                            class="btn3d"
+                                            name="td2d_btn_kh1"
+                                            value="Kết hợp"
+                                            id="td2d_btn_kh1"
+                                            type="submit"
+                                            onclick="dau_duoi_kh()"
+                                        />
+                                        <input
+                                            class="btn3d"
+                                            name="td2d_btn_all_dau"
+                                            value="Lấy hết"
+                                            id="td2d_btn_all_dau"
+                                            type="submit"
+                                            onclick="dau_duoi_all()"
+                                        />
+                                        <input
+                                            class="btn3d"
+                                            name="td2d_btn_loai_dau"
+                                            value="Loại hết"
+                                            id="td2d_btn_loai_dau"
+                                            type="submit"
+                                            onclick="dau_duoi_loai()"
+                                        />
+                                        <input
+                                            class="btn3d"
+                                            name="td2d_btn_xoa1"
+                                            value="Xóa"
+                                            id="td2d_btn_xoa1"
+                                            type="submit"
+                                            onclick="document.getElementById('td2d_bot_input1').value ='';
+                                             document.getElementById('td2d_them_input1').value ='';
+                                             document.getElementById('td2d_tong_input1').value ='';
+                                             document.getElementById('td2d_duoi_input').value ='';
+                                             document.getElementById('td2d_txt_output2').value ='';
+                                             document.getElementById('td2d_dau_input').value ='';
+                                             document.getElementById('td2d_txt_output2count').hidden= true"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="col-4">
+                                    <div class="col-12">
+                                        <div class="col-4">
+                                            <textarea
+                                                class="block-note ddb-txt-area-3"
+                                                name="td2d_dau_input"
+                                                id="td2d_dau_input"
+                                            ></textarea>
+                                        </div>
+                                        <div class="col-4">
+                                            <textarea
+                                                class="block-note ddb-txt-area-3-mid"
+                                                name="td2d_duoi_input"
+                                                id="td2d_duoi_input"
+                                            ></textarea>
+                                        </div>
+                                        <div class="col-4">
+                                            <textarea
+                                                class="block-note ddb-txt-area-3"
+                                                name="td2d_tong_input1"
+                                                id="td2d_tong_input1"
+                                            ></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="col-2 bottom text-right">Thêm</div>
+                                        <div class="col-10 float-right">
+                                            <textarea
+                                                class="block-note ddb-txt-area-2"
+                                                name="td2d_them_input1"
+                                                id="td2d_them_input1"
+                                            ></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="col-2 bottom text-right">Bỏ</div>
+                                        <div class="col-10 float-right">
+                                            <textarea
+                                                class="block-note ddb-txt-area-2"
+                                                name="td2d_bot_input1"
+                                                id="td2d_bot_input1"
+                                            ></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-8 txt-container">
+                                    <textarea
+                                        class="block-note ddb-txt-area-4"
+                                        name="td2d_txt_output2"
+                                        id="td2d_txt_output2"
+                                        placeholder="Kết hợp: Tạo dàn có đầu, đuôi và tổng đều thỏa mãn yêu cầu nhập vào
+Lấy hết: Tạo dàn có đầu hoặc đuôi hoặc tổng thỏa mãn yêu cầu nhập vào
+Loại hết: Tạo dàn có đầu, đuôi và tổng đều không nằm trong các số nhập vào"
+                                    ></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-wrapper block-wrapper">
+                        <div class="tms-box">
+                            <div class="col-12">
+                                <div class="col-4 title-group-top">
+                                    <div class="col-6">Chạm</div>
+                                    <div class="col-6 pad-left-5">Tổng</div>
+                                </div>
+                                <div class="col-8 float-right">
+                                    <div class="tms-box-button-group">
+                                        <input
+                                            class="btn3d"
+                                            name="td2d_btn_kh2"
+                                            value="Kết hợp"
+                                            id="td2d_btn_kh2"
+                                            type="submit"
+                                            onclick="cham_kh()"
+                                        />
+                                        <input
+                                            class="btn3d"
+                                            name="td2d_btn_all_cham"
+                                            value="Lấy hết"
+                                            id="td2d_btn_all_cham"
+                                            type="submit"
+                                            onclick="cham_all()"
+                                        />
+                                        <input
+                                            class="btn3d"
+                                            name="td2d_btn_loai_cham"
+                                            value="Loại hết"
+                                            id="td2d_btn_loai_cham"
+                                            type="submit"
+                                            onclick="cham_loai()"
+                                        />
+                                        <input
+                                            class="btn3d"
+                                            name="td2d_btn_xoa2"
+                                            value="Xóa"
+                                            id="td2d_btn_xoa2"
+                                            type="submit"
+                                            onclick="document.getElementById('td2d_cham_input2').value=''; 
+                                            document.getElementById('td2d_tong_input2').value ='';
+                                            document.getElementById('td2d_them_input2').value ='';
+                                            document.getElementById('td2d_bot_input2').value ='';
+                                            document.getElementById('td2d_txt_output3').value ='';document.getElementById('td2d_txt_output3count').hidden= true "
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="col-4">
+                                    <div class="col-12">
+                                        <div class="col-6">
+                                            <textarea
+                                                class="block-note ddb-txt-area-2"
+                                                name="td2d_cham_input2"
+                                                id="td2d_cham_input2"
+                                            ></textarea>
+                                        </div>
+                                        <div class="col-6">
+                                            <textarea
+                                                class="block-note ddb-txt-area-2-right"
+                                                name="td2d_tong_input2"
+                                                id="td2d_tong_input2"
+                                            ></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="col-2 bottom text-right">Thêm</div>
+                                        <div class="col-10 float-right">
+                                            <textarea
+                                                class="block-note ddb-txt-area-2"
+                                                name="td2d_them_input2"
+                                                id="td2d_them_input2"
+                                            ></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="col-2 bottom text-right">Bỏ</div>
+                                        <div class="col-10 float-right">
+                                            <textarea
+                                                class="block-note ddb-txt-area-2"
+                                                name="td2d_bot_input2"
+                                                id="td2d_bot_input2"
+                                            ></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-8 txt-container">
+                                    <textarea
+                                        class="block-note ddb-txt-area-1"
+                                        name="td2d_txt_output3"
+                                        id="td2d_txt_output3"
+                                        placeholder="Kết hợp: Tạo dàn có chạm và tổng đều thỏa mãn yêu cầu nhập vào
+Lấy hết: Tạo dàn có chạm hoặc tổng thỏa mãn yêu cầu nhập vào
+Loại hết: Tạo dàn có chạm và tổng đều không nằm trong các số nhập vào"
+                                    ></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-wrapper block-wrapper">
+                        <div class="tms-box">
+                            <div class="col-12">
+                                <div class="col-4 title-group-top">
+                                    <div class="col-6">Bộ</div>
+                                    <div class="col-6 pad-left-5">Tổng</div>
+                                </div>
+                                <div class="col-8 float-right">
+                                    <div class="tms-box-button-group">
+                                        <input
+                                            class="btn3d"
+                                            name="td2d_btn_kh3"
+                                            value="Kết hợp"
+                                            id="td2d_btn_kh3"
+                                            type="submit"
+                                            onclick="bo_tong(1)"
+                                        />
+                                        <input
+                                            class="btn3d"
+                                            name="td2d_btn_all_group"
+                                            value="Lấy hết"
+                                            id="td2d_btn_all_group"
+                                            type="submit"
+                                            onclick="bo_tong(2)"
+                                        />
+                                        <input
+                                            class="btn3d"
+                                            name="td2d_btn_loai_group"
+                                            value="Loại hết"
+                                            id="td2d_btn_loai_group"
+                                            type="submit"
+                                            onclick="bo_loai()"
+                                        />
+                                        <input
+                                            class="btn3d"
+                                            name="td2d_btn_xoa3"
+                                            value="Xóa"
+                                            id="td2d_btn_xoa3"
+                                            type="submit"
+                                            onclick="document.getElementById('td2d_group_input').value='';
+                                            document.getElementById('td2d_tong_input3').value='';
+                                            document.getElementById('td2d_them_input3').value='';
+                                            document.getElementById('td2d_bot_input3').value='';
+                                            document.getElementById('td2d_txt_output4').value='';document.getElementById('td2d_txt_output4count').hidden= true"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="col-4">
+                                    <div class="col-12">
+                                        <div class="col-6">
+                                            <textarea
+                                                class="block-note ddb-txt-area-2"
+                                                name="td2d_group_input"
+                                                id="td2d_group_input"
+                                            ></textarea>
+                                        </div>
+                                        <div class="col-6">
+                                            <textarea
+                                                class="block-note ddb-txt-area-2-right"
+                                                name="td2d_tong_input3"
+                                                id="td2d_tong_input3"
+                                            ></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="col-2 bottom text-right">Thêm</div>
+                                        <div class="col-10 float-right">
+                                            <textarea
+                                                class="block-note ddb-txt-area-2"
+                                                name="td2d_them_input3"
+                                                id="td2d_them_input3"
+                                            ></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="col-2 bottom text-right">Bỏ</div>
+                                        <div class="col-10 float-right">
+                                            <textarea
+                                                class="block-note ddb-txt-area-2"
+                                                name="td2d_bot_input3"
+                                                id="td2d_bot_input3"
+                                            ></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-8 txt-container">
+                                    <textarea
+                                        class="block-note ddb-txt-area-1"
+                                        name="td2d_txt_output4"
+                                        id="td2d_txt_output4"
+                                        placeholder="Kết hợp: Tạo dàn có bộ và tổng đều thỏa mãn yêu cầu nhập vào
+Lấy hết: Tạo dàn có bộ hoặc tổng thỏa mãn yêu cầu nhập vào
+Loại hết: Tạo dàn có bộ và tổng đều không nằm trong các số nhập vào"
+                                    ></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-wrapper block-wrapper">
+                        <div class="tms-box">
+                            <div class="col-12">
+                                <div class="col-4 title-group-top">Chạm</div>
+                                <div class="col-8 float-right">
+                                    <div class="tms-box-button-group">
+                                        <input
+                                            class="btn3d"
+                                            name="td2d_btn_cham_trong"
+                                            value="Chạm ghép trong"
+                                            id="td2d_btn_cham_trong"
+                                            type="submit"
+                                            onclick="cham_trong()"
+                                        />
+                                        <input
+                                            class="btn3d"
+                                            name="td2d_btn_cham_ngoai"
+                                            value="Chạm ghép ngoài"
+                                            id="td2d_btn_cham_ngoai"
+                                            type="submit"
+                                            onclick="cham_ngoai()"
+                                        />
+                                        <input
+                                            class="btn3d"
+                                            name="td2d_btn_ghep_cham_tong"
+                                            value="Chạm ghép tổng"
+                                            id="td2d_btn_ghep_cham_tong"
+                                            type="submit"
+                                            onclick="cham_tong()"
+                                        />
+                                        <input
+                                            class="btn3d"
+                                            name="td2d_btn_xoa"
+                                            value="Xóa"
+                                            id="td2d_btn_xoa"
+                                            type="submit"
+                                            onclick="document.getElementById('td2d_txt_output1').value='';
+                                            document.getElementById('td2d_cham_input1').value='';document.getElementById('td2d_txt_output1count').hidden= true"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="col-4">
+                                    <textarea
+                                        class="block-note ddb-txt-area-1"
+                                        name="td2d_cham_input1"
+                                        id="td2d_cham_input1"
+                                    ></textarea>
+                                </div>
+                                <div class="col-8 txt-container">
+                                    <textarea
+                                        class="block-note ddb-txt-area-1"
+                                        name="td2d_txt_output1"
+                                        id="td2d_txt_output1"
+                                        placeholder="Chạm ghép trong: Ghép các chạm nhập vào với nhau
+Chạm ghép ngoài: Ghép các chạm nhập vào với các chạm còn lại
+Chạm ghép tổng: Tạo dàn có chạm hoặc tổng thỏa mãn yêu cầu nhập vào"
+                                    ></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+					 <div class="box-wrapper block-wrapper">
+                        <div class="tms-box">
+                            <div class="col-12">
+                                <div class="col-6 title-group-top">
+                                    <div class="col-6">Dàn 2D-1</div>
+                                    <div class="col-6 pad-left-5">Dàn 2D-2</div>
+                                </div>
+                                <div class="col-6 float-right">
+                                    <div class="tms-box-button-group">
+                                        <input
+                                            class="btn3d"
+                                            name="ghep2_btn_trung"
+                                            value="Lấy trùng"
+                                            id="ghep2_btn_trung"
+                                            type="submit"
+                                            onclick="lay(1)"
+                                        />
+                                        <input
+                                            class="btn3d"
+                                            name="ghep2_btn_all"
+                                            value="Lấy hết"
+                                            id="ghep2_btn_all"
+                                            type="submit"
+                                            onclick="lay(2)"
+                                        />
+                                        <input
+                                            class="btn3d"
+                                            name="ghep2_btn_loai"
+                                            value="Loại hết"
+                                            id="ghep2_btn_loai"
+                                            type="submit"
+                                            onclick="lay(3)"
+                                        />
+                                        <input
+                                            class="btn3d"
+                                            name="ghep2_btn_1_loai_2"
+                                            value="1 Loại 2"
+                                            id="ghep2_btn_1_loai_2"
+                                            type="submit"
+                                            onclick="lay(4)"
+                                        />
+                                        <input
+                                            class="btn3d"
+                                            name="ghep2_btn_2_loai_1"
+                                            value="2 Loại 1"
+                                            id="ghep2_btn_2_loai_1"
+                                            type="submit"
+                                            onclick="lay(5)"
+                                        />
+                                        <input
+                                            class="btn3d"
+                                            name="ghep2_btn_xoa"
+                                            value="Xóa"
+                                            id="ghep2_btn_xoa"
+                                            type="submit"
+                                            onclick="document.getElementById('ghep2_dan1').value='';
+     document.getElementById('ghep2_dan2').value='';
+     document.getElementById('ghep2_output').value='';document.getElementById('ghep2_outputcount').hidden=true;"
+                                        />					
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="col-6">
+                                    <div class="col-6">
+                                        <textarea
+                                            class="block-note ddb-txt-area-1"
+                                            name="ghep2_dan1"
+                                            id="ghep2_dan1"
+                                        ></textarea>
+                                    </div>
+                                    <div class="col-6">
+                                        <textarea
+                                            class="block-note ddb-txt-area-1 ghep2-txt-area-right"
+                                            name="ghep2_dan2"
+                                            id="ghep2_dan2"
+                                        ></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-6 txt-container">
+                                    <textarea
+                                        class="block-note ddb-txt-area-1"
+                                        name="ghep2_output"
+                                        id="ghep2_output"
+                                        placeholder="Lấy trùng: Lấy các số xuất hiện trong cả 2 dàn
+Lấy hết: Lấy các số xuất hiện ít nhất 1 trong 2 dàn
+Loại hết: Lấy các số không xuất hiện trong cả 2 dàn
+1 Loại 2: Lấy dàn 1 bỏ đi các số xuất hiện trong dàn 2
+2 Loại 1: Lấy dàn 2 bỏ đi các số xuất hiện trong dàn 1"
+                                    ></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                     <div class="box-wrapper block-wrapper">
+                        <div class="tms-box">
+                            <div class="col-12">
+                                <div class="tms-box-button-group">                                    
+                                    <input
+                                        class="btn3d btn-lay-db btn-dau"
+                                        name="btn_dau_chan"
+                                        value="Đầu chẵn"
+                                        id="btn_dau_chan"
+                                        type="submit"
+                                        onclick="dac_biet(3)"
+                                    />
+                                    <input
+                                        class="btn3d btn-lay-db btn-dau"
+                                        name="btn_dau_le"
+                                        value="Đầu lẻ"
+                                        id="btn_dau_le"
+                                        type="submit"
+                                        onclick="dac_biet(4)"
+                                    />
+                                   
+                                    
+                                   
+                                    <input
+                                        class="btn3d btn-lay-db btn-duoi"
+                                        name="btn_duoi_chan"
+                                        value="Đuôi chẵn"
+                                        id="btn_duoi_chan"
+                                        type="submit"
+                                        onclick="dac_biet(7)"
+                                    />
+                                    <input
+                                        class="btn3d btn-lay-db btn-duoi"
+                                        name="btn_duoi_le"
+                                        value="Đuôi lẻ"
+                                        id="btn_duoi_le"
+                                        type="submit"
+                                        onclick="dac_biet(8)"
+                                    />
+                                    
+                                    
+                                    <input
+                                        class="btn3d btn-lay-db btn-tong"
+                                        name="btn_tong_chan"
+                                        value="Tổng chẵn"
+                                        id="btn_tong_chan"
+                                        type="submit"
+                                        onclick="dac_biet(11)"
+                                    />
+                                    <input
+                                        class="btn3d btn-lay-db btn-tong"
+                                        name="btn_tong_le"
+                                        value="Tổng lẻ"
+                                        id="btn_tong_le"
+                                        type="submit"
+                                        onclick="dac_biet(12)"
+                                    />
+                                    <input
+                                        class="btn3d btn-lay-db btn-chan-le"
+                                        name="btn_chan_chan"
+                                        value="Chẵn chẵn"
+                                        id="btn_chan_chan"
+                                        type="submit"
+                                        onclick="dac_biet(13)"
+                                    />
+                                    <input
+                                        class="btn3d btn-lay-db btn-chan-le"
+                                        name="btn_le_le"
+                                        value="Lẻ lẻ"
+                                        id="btn_le_le"
+                                        type="submit"
+                                        onclick="dac_biet(14)"
+                                    />
+                                    <input
+                                        class="btn3d btn-lay-db btn-chan-le"
+                                        name="btn_chan_le"
+                                        value="Chẵn lẻ"
+                                        id="btn_chan_le"
+                                        type="submit"
+                                        onclick="dac_biet(15)"
+                                    />
+                                    <input
+                                        class="btn3d btn-lay-db btn-chan-le"
+                                        name="btn_le_chan"
+                                        value="Lẻ chẵn"
+                                        id="btn_le_chan"
+                                        type="submit"
+                                        onclick="dac_biet(16)"
+                                    />
+                                    <input
+                                        class="btn3d btn-lay-db btn-lon-be"
+                                        name="btn_lon_lon"
+                                        value="Lớn lớn"
+                                        id="btn_lon_lon"
+                                        type="submit"
+                                        onclick="dac_biet(17)"
+                                    />
+                                    <input
+                                        class="btn3d btn-lay-db btn-lon-be"
+                                        name="btn_be_be"
+                                        value="Bé bé"
+                                        id="btn_be_be"
+                                        type="submit"
+                                        onclick="dac_biet(18)"
+                                    />
+                                    <input
+                                        class="btn3d btn-lay-db btn-lon-be"
+                                        name="btn_lon_be"
+                                        value="Lớn bé"
+                                        id="btn_lon_be"
+                                        type="submit"
+                                        onclick="dac_biet(19)"
+                                    />
+                                    <input
+                                        class="btn3d btn-lay-db btn-lon-be"
+                                        name="btn_be_lon"
+                                        value="Bé lớn"
+                                        id="btn_be_lon"
+                                        type="submit"
+                                        onclick="dac_biet(20)"
+                                    />
+                                   
+                                   
+                                    <input
+                                        class="btn3d btn-lay-db btn-vt"
+                                        name="btn_vuong_vuong"
+                                        value="Vuông vuôg"
+                                        id="btn_vuong_vuong"
+                                        type="submit"
+                                        onclick="dac_biet(49)"
+                                    />
+                                    <input
+                                        class="btn3d btn-lay-db btn-vt"
+                                        name="btn_tron_tron"
+                                        value="Tròn tròn"
+                                        id="btn_tron_tron"
+                                        type="submit"
+                                        onclick="dac_biet(50)"
+                                    />
+                                    <input
+                                        class="btn3d btn-lay-db btn-vt"
+                                        name="btn_vuong_tron"
+                                        value="Vuông tròn"
+                                        id="btn_vuong_tron"
+                                        type="submit"
+                                        onclick="dac_biet(51)"
+                                    />
+                                    <input
+                                        class="btn3d btn-lay-db btn-vt"
+                                        name="btn_tron_vuong"
+                                        value="Tròn vuông"
+                                        id="btn_tron_vuong"
+                                        type="submit"
+                                        onclick="dac_biet(52)"
+                                    />
+                                    <input
+                                        class="btn3d btn-lay-db btn-kep"
+                                        name="btn_kep_bang"
+                                        value="Kép bằng"
+                                        id="btn_kep_bang"
+                                        type="submit"
+                                        onclick="dac_biet(53)"
+                                    />
+                                    <input
+                                        class="btn3d btn-lay-db btn-kep"
+                                        name="btn_kep_lech"
+                                        value="Kép lệch"
+                                        id="btn_kep_lech"
+                                        type="submit"
+                                        onclick="dac_biet(54)"
+                                    />
+                                    <input
+                                        class="btn3d btn-lay-db btn-kep"
+                                        name="btn_kep_am"
+                                        value="Kép âm"
+                                        id="btn_kep_am"
+                                        type="submit"
+                                        onclick="dac_biet(55)"
+                                    />
+                                    <input
+                                        class="btn3d btn-lay-db btn-kep"
+                                        name="btn_sat_kep"
+                                        value="Sát kép"
+                                        id="btn_sat_kep"
+                                        type="submit"
+                                        onclick="dac_biet(56)"
+                                    />
+                                    <input
+                                        class="btn3d btn-lay-db btn-du"
+                                        name="btn_du_0"
+                                        value="Dư 0"
+                                        id="btn_du_0"
+                                        type="submit"
+                                        onclick="dac_biet(57)"
+                                    />
+                                    <input
+                                        class="btn3d btn-lay-db btn-du"
+                                        name="btn_du_1"
+                                        value="Dư 1"
+                                        id="btn_du_1"
+                                        type="submit"
+                                        onclick="dac_biet(58)"
+                                    />
+                                    <input
+                                        class="btn3d btn-lay-db btn-du"
+                                        name="btn_du_2"
+                                        value="Dư 2"
+                                        id="btn_du_2"
+                                        type="submit"
+                                        onclick="dac_biet(59)"
+                                    />
+                                    <input
+                                        class="btn3d btn-lay-db btn-trong-ngoai"
+                                        name="btn_trong_ngoai"
+                                        value="Trong|Ngoài"
+                                        id="btn_trong_ngoai"
+                                        type="submit"
+                                        onclick="dac_biet(60)"
+                                    />
+                                </div>
+                            </div>
+                            <div class="col-12 txt-container">
+                                <textarea
+                                    class="block-note ddb-txt-area-1"
+                                    name="lay_db_output"
+                                    id="lay_db_output"
+                                    placeholder="Trong Bộ Dư, 00 tính là 100 nên thuộc Bộ Dư 1"
+                                ></textarea>
+                            </div>
+                        </div>
+                    </div>
+            <div class="row body-box-wrapper">
+                <div class="col-lg-12">
+                    <h2 class="header-list-index">
+                        <span class="title-list-index">Ghép xiên</span>
+                    </h2>
+                    <div class="box-wrapper block-wrapper">
+                        <div class="tms-box">
+                            <div class="col-12">
+                                <div class="col-4 lx-type-box">
+                                    Chọn Xiên
+                                    <select class="lx-type-ip" name="lx-type" id="lx-type">
+                                        <option value="2">Xiên 2</option>
+                                        <option value="3">Xiên 3</option>
+                                        <option value="4">Xiên 4</option>
+                                    </select>
+                                </div>
+                                <div class="col-8 float-right">
+                                    <div class="tms-box-button-group">
+                                        <input
+                                            class="btn3d"
+                                            name="lx_btn_ghep"
+                                            value="Ghép"
+                                            id="lx_btn_ghep"
+                                            type="submit"
+                                            onclick="xien()"
+                                        />
+                                        <input
+                                            class="btn3d"
+                                            name="lx_btn_xoa"
+                                            value="Xóa"
+                                            id="lx_btn_xoa"
+                                            type="submit"
+                                            onclick="document.getElementById('lx-type').value=2;document.getElementById('lx_input').value='';document.getElementById('lx_output').value='';document.getElementById('lx_outputcount').hidden=true;"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="col-4">
+                                    <textarea
+                                        class="block-note ddb-txt-area-1"
+                                        name="lx_input"
+                                        id="lx_input"
+                                        placeholder="Nhập các số 2D"
+                                    ></textarea>
+                                </div>
+                                <div class="col-8 txt-container">
+                                    <textarea
+                                        class="block-note ddb-txt-area-1"
+                                        name="lx_output"
+                                        id="lx_output"
+                                        placeholder="Ghép xiên 2-3-4.. số từ các số nhập vào"
+                                    ></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+
+      
+        <script data-cfasync="false" src="./assets/email-decode.min.js"></script>
+        <script>
+            /*(function scroll_to_top() {
+                let bt = $("#back-to-top");
+                $(window).scroll(function () {
+                    $(this).scrollTop() > 300 ? bt.fadeIn() : bt.fadeOut();
+                });
+                bt.on("click", function (e) {
+                    return $("html,body").animate({ scrollTop: 0 }, 800), !1;
+                });
+            })(); */
+			 // Cập nhật thời gian tự động
+        function updateTime() {
+            const timeDisplay = document.querySelector('.time-display');
+            const now = new Date();
+            // Format thời gian
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            const day = String(now.getDate()).padStart(2, '0');
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const year = now.getFullYear();
+
+            timeDisplay.textContent = `${hours}:${minutes}:${seconds} ${day}/${month}/${year}`;
+        }
+        // Cập nhật thời gian mỗi giây
+        setInterval(updateTime, 1000);
+        updateTime(); // Cập nhật ngay lập tức
+            (function createButtons() {
+                form_containers = Array.from(document.getElementsByClassName("txt-container"));
+                form_containers.forEach((container) => {
+                    let button = document.createElement("button");
+                    button.innerText = "COPY";
+                    button.classList.add("btnCopy");
+                    button.onclick = async function () {
+                        copyText = button.previousElementSibling;
+                        copyText.select();
+                        copyText.setSelectionRange(0, 99999);
+                        navigator.clipboard.writeText(copyText.value);
+                        button.innerText = "Đã copy";
+                        button.classList.add("btnCopied");
+                        setTimeout(() => {
+                            button.innerText = "COPY";
+                            button.classList.remove("btnCopied");
+                        }, 2000);
+                    };
+                    container.appendChild(button);
+
+                    container.appendChild(button);
+                    let count_btn = document.createElement("button");
+                    count_btn.classList.add("btnCount");
+                    id = button.previousElementSibling.id + "count";
+                    count_btn.id = id;
+                    count_btn.disabled = true;
+                    count_btn.hidden = true;
+                    container.appendChild(count_btn);
+                });
+            })();
+        </script>
+<div class="arrow_page_up" id="back-to-top"> <a href="#" title="Về đầu trang">
+<img src="./assets/page_up.png" width="40" height="40" alt=""> </a></div> 
+<script>
+(function scroll_to_top(){let bt=$("#back-to-top");
+$(window).scroll(function(){$(this).scrollTop()>300?bt.fadeIn():bt.fadeOut();});
+bt.on("click",function(e){return $("html,body").animate({scrollTop:0},800),!1;});})();
+</script> 
+    </body>
+</html>
