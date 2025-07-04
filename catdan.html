@@ -14,6 +14,51 @@
     <link href="./assets/jquery-ui-1.12.1.min.css" rel="stylesheet" media="all" />
 
 </head><body>
+	.tabs {width: 80%; margin: 0 auto;
+}
+.tab-links {list-style: none; padding: 15px;display: flex; margin-bottom: 0px; justify-content: center; 
+}
+.tab-links li {margin-right: 10px;
+}
+.tab-links a {padding: 10px 20px;display: block;text-decoration: none; border: 1px solid #ccc;border-radius: 5px; color: #333;
+}
+.tab-links a:hover {background-color: #ddd;
+}
+.tab-links .active { color: white;
+}
+.tab-content {display: none;
+}
+.tab-pane {padding: 5px;border: 1px solid #ccc; border-radius: 5px;
+}
+.tab-pane.active {display: block;
+}		
+body {margin:0;}
+.navbar {overflow: hidden;background-color: #333;position: fixed;top: 0; width: 100%;
+}
+.navbar a { float: left;display: block; color: #f2f2f2; text-align: center; padding: 7px 8px; text-decoration: none; font-size: 17px;
+}
+.main { padding: 2px;margin-top: 2px;height: 800px; 
+}
+input[type="text"],input[type="password"],input[type="search"],input[type="email"],input[type="tel"],input.input-field,textarea,select,input[type="submit"],button[type="submit"],input[type="reset"],input[type="button"]{transition:all linear .3s;-webkit-transition:all linear .3s;-moz-transition:all linear .3s;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;outline:none}
+input[type="text"],input[type="password"],input[type="search"],input[type="email"],input[type="tel"],input.input-field,textarea{background:#FAFAFA;background:-moz-linear-gradient(top,#FAFAFA 0%,white 100%);background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,#FAFAFA),color-stop(100%,white));background:-webkit-linear-gradient(top,#FAFAFA 0%,white 100%);background:-o-linear-gradient(top,#FAFAFA 0%,white 100%);background:-ms-linear-gradient(top,#FAFAFA 0%,white 100%);
+background:linear-gradient(top,#FAFAFA 0%,white 100%);border:1px solid #D8D8D9;margin:5px 5px 5px 0;display:inline-block;-moz-box-shadow:0 1px 0 #FFF,0 1px 0 #FFF inset;box-shadow:0 1px 0 white,0 1px 0 white inset;-webkit-box-shadow:0 1px 0 white,0 1px 0 white inset;text-shadow:0 1px 0 white;padding:5px 8px 5px;color:#777;font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:normal}
+input[type="submit"],button[type="submit"],input[type="reset"]{padding:6px 10px;font-family:Arial,Helvetica,sans-serif;font-weight:normal;display:inline-block;margin:5px 5px 5px 0;cursor:pointer}
+input[type="submit"],button[type="submit"]{border:none!important;outline:none}
+input[type="submit"],button[type="submit"]{background-color:#FF9000}
+input[type="submit"],input[type="submit"]:hover,button[type="submit"],.button:hover{box-shadow:inset 0 2px 0 rgba(255,255,255,.2),0 1px 0 white,inset 0 1px 0 rgba(0,0,0,.2),inset 0 -1px 0 rgba(0,0,0,.2),inset -1px 0 0 rgba(0,0,0,.1),inset 1px 0 0 rgba(0,0,0,.1);-webkit-box-shadow:inset 0 2px 0 rgba(255,255,255,.2),0 1px 0 white,inset 0 1px 0 rgba(0,0,0,.2),inset 0 -1px 0 rgba(0,0,0,.2),inset -1px 0 0 rgba(0,0,0,.1),inset 1px 0 0 rgba(0,0,0,.1);-moz-box-shadow:inset 0 2px 0 rgba(255,255,255,.2),0 1px 0 #FFF,inset 0 1px 0 rgba(0,0,0,.2),inset 0 -1px 0 rgba(0,0,0,.2),inset -1px 0 0 rgba(0,0,0,.1),inset 1px 0 0 rgba(0,0,0,.1)}
+input[type="submit"],button[type="submit"],input[type="submit"]:hover,.button:hover,.FollowByEmail .follow-by-email-inner .follow-by-email-submit{text-shadow:0 1px 0 rgba(0,0,0,0.5);color:white!important;background-image:url( 	 	);background-position:center -5px}
+.contact-form-button-submit {border-color: #C1C1C1;background: #E3E3E3;color: #585858;width: 20%;max-width: 20%;margin-bottom: 10px;}
+.contact-form-button-submit:hover{background: #4C8EF9;color: #FF0000;border: 1px solid #FAFAFA;}
+.date-header {background: transparent url() no-repeat scroll left center;font-size: 13px;
+font-family: Arial;line-height: 1.6em;padding: 4px 0 4px 30px;margin: 5px 0 30px 0;}
+.button-group{float:right;text-align:left;margin:0 auto}
+button,button[disabled]:active{border:none;font-size:12px;font-family:&#39;Open Sans&#39;;font-weight:normal;padding:4px 10px;text-decoration:none;background:#fff;color:#444;display:inline-block;transition:all 0.5s linear;cursor:pointer}
+button:hover{background:#e25734;color:#fff;transition:all 0.2s linear;}
+button:active{background:#e25734;color:#fff;}
+#hide-emo {display: none;}
+button[disabled],button[disabled]:active{color:#c34535;cursor:default}
+.small-button a,.small-button1 a {font-size:13px;font-family:&#39;Open Sans&#39;;cursor:pointer;font-weight:400;margin:15px 5px 5px 0;text-decoration:none;text-transform:none;text-shadow:none;display:inline-block;background-color:#e25633;color:#fff;padding:4px 10px;cursor:pointer;border-radius:3px;}
+.small-button:hover a,.small-button1:hover a{text-shadow:none;display:inline-block;background-color:#ec6442;color:#fff;}
     <div class="tabs">
         <!-- Tab links -->
         <ul class="tab-links">
