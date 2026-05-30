@@ -99,15 +99,13 @@ body>.container { max-width: 100% !important; width: 85% !important }
             width: 55% !important;         
         }
 
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background-color: #cbd5e1; 
-            margin: 0;
-            padding: 20px;
-        }
+  body { 
+    display: block; /* Đổi từ flex thành block */
+    min-height: 100vh; 
+    background-color: #cbd5e1; 
+    margin: 0; 
+    padding: 0; /* Bỏ padding để đỡ bị lẹm 2 bên trên mobile */
+}
 
         .phone-mockup {
             width: 1100px; 
