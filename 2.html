@@ -1075,35 +1075,44 @@
 			}
 			setInterval(updateTime, 1000);
 			updateTime(); 
-				(function createButtons() {
-					form_containers = Array.from(document.getElementsByClassName("txt-container"));
-					form_containers.forEach((container) => {
-						let button = document.createElement("button");
-						button.innerText = "COPY";
-						button.classList.add("btnCopy");
-						button.onclick = async function () {
-							copyText = button.previousElementSibling;
-							copyText.select();
-							copyText.setSelectionRange(0, 99999);
-							navigator.clipboard.writeText(copyText.value);
-							button.innerText = "Đã copy";
-							button.classList.add("btnCopied");
-							setTimeout(() => {
-								button.innerText = "COPY";
-								button.classList.remove("btnCopied");
-							}, 2000);
-						};
-						container.appendChild(button);
-						container.appendChild(button);
-						let count_btn = document.createElement("button");
-						count_btn.classList.add("btnCount");
-						id = button.previousElementSibling.id + "count";
-						count_btn.id = id;
-						count_btn.disabled = true;
-						count_btn.hidden = true;
-						container.appendChild(count_btn);
-					});
-				})();
+				(function() {
+    // Thêm let để tránh xung đột biến toàn cục
+    let form_containers = document.querySelectorAll('.txt-container');
+    form_containers.forEach(container => {
+        let button = document.createElement("button");
+        button.classList.add("btnCopy");
+        button.innerText = "COPY";
+        button.onclick = function() {
+            let textInput = container.querySelector('textarea, input');
+            if (textInput) {
+                textInput.select();
+                textInput.setSelectionRange(0, 99999); 
+                navigator.clipboard.writeText(textInput.value);
+                button.innerText = "COPIED";
+                button.classList.add("btnCopied");
+                setTimeout(function() {
+                    button.innerText = "COPY";
+                    button.classList.remove("btnCopied");
+                }, 2000);
+            }
+        };
+        
+        // ĐÃ XÓA 1 DÒNG TRÙNG LẶP Ở ĐÂY để không bị nhân đôi nút
+        container.appendChild(button);
+        
+        let count_btn = document.createElement("button");
+        count_btn.classList.add("btnCount");
+        
+        // Kiểm tra phần tử trước đó để tránh lỗi crash script
+        let id = button.previousElementSibling ? button.previousElementSibling.id + "count" : "";
+        if (id) {
+            count_btn.id = id;
+        }
+        count_btn.disabled = true;
+        count_btn.hidden = true;
+        container.appendChild(count_btn);
+    });
+})();
 
 $(document).ready(function() {
     var $btnBackToTop = $("#back-to-top");
