@@ -193,10 +193,7 @@ body>.container { max-width: 100% !important; width: 85% !important }
             transform: scale(1.1) !important;     
         }
      
-        #back-to-top:hover {
-            background-color: #2563eb !important; 
-            transform: scale(1.1) !important;     
-        }
+       
 
         .home-indicator-bar {
             height: 28px !important;
