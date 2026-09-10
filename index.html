@@ -12,36 +12,29 @@
     <link rel="SHORTCUT ICON" href="assets/favicon.ico" type="image/x-icon">
     <link href="./assets/bootstrap.min.css" rel="stylesheet" media="all">
     <link href="./assets/main.css?v=2" rel="stylesheet" media="all">
-    <!-- Chỉ giữ lại 1 bản jQuery chuẩn để tránh xung đột -->
     <script src="./assets/jquery-3.3.1.min.js"></script>
     <script src="./assets/lodash.min.js"></script>
     <script src="./assets/moments.js"></script>
     <script src="./assets/xs.js?v=123"></script>
 </head>
 <body>
-<div class="clear"></div>
-<div class="container">
-    <div class="col-lg-12">
-        
-        <!-- Thanh Topbar đã căn chỉnh lại Flexbox chuẩn di động -->
-        <div class="block-wrapper page-single block-note" style="width:100%; margin-bottom:5px; padding: 6px 12px; display:flex; justify-content:space-between; align-items:center; box-sizing:border-box;">
-            <div class="time-display" style="font-weight:700; color:#337ab7; font-size:13px; line-height:1;"></div>
-            
-            <div style="display:flex; align-items:center; gap:6px; line-height:1;">
-                <span style="font-size:13px; font-weight:600; color:#333;">Quôn moblé</span>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="#337ab7" style="display:block;"><path d="M2 22h20V2L2 22z"/></svg>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="#337ab7" style="display:block;"><path d="M12 21l-12-14.3c.5-.4 4.8-4 12-4s11.5 3.6 12 4l-12 14.3z"/></svg>
-                
-                <!-- Khối Pin -->
-                <div style="display:flex; align-items:center; gap:3px;">
-                    <span style="font-size:10px; font-weight:700; color:#000; line-height:1;">85%</span>
-                    <div style="width:20px; height:10px; border:1px solid #000; border-radius:2px; padding:1px; display:flex; background-color:#fff; box-sizing:border-box;">
-                        <div style="width:85%; height:100%; background-color:#24cc63; border-radius:1px;"></div>
-                    </div>
-                    <div style="width:2px; height:4px; background-color:#000; border-radius:0 1px 1px 0;"></div>
-                </div>
-            </div>
-        </div>
+<table style="width:100% !important; border-collapse:collapse !important; border:none !important; margin-bottom:8px !important; background:#f5f5f5 !important; border:1px solid #e3e3e3 !important; border-radius:4px !important;">
+    <tr>
+        <td style="text-align:left !important; vertical-align:middle !important; padding:8px 10px !important; white-space:nowrap !important;">
+            <span class="time-display" style="font-weight:700 !important; color:#337ab7 !important; font-size:13px !important; display:inline-block !important;"></span>
+        </td>
+        <td style="text-align:right !important; vertical-align:middle !important; padding:8px 10px !important; white-space:nowrap !important;">
+            <span style="font-size:13px !important; font-weight:600 !important; color:#333 !important; display:inline-block !important; vertical-align:middle !important; margin-right:4px !important;">Quôn moblé</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#337ab7" style="display:inline-block !important; vertical-align:middle !important; margin-right:2px !important;"><path d="M2 22h20V2L2 22z"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#337ab7" style="display:inline-block !important; vertical-align:middle !important; margin-right:4px !important;"><path d="M12 21l-12-14.3c.5-.4 4.8-4 12-4s11.5 3.6 12 4l-12 14.3z"/></svg>
+            <span style="font-size:11px !important; font-weight:700 !important; color:#000 !important; display:inline-block !important; vertical-align:middle !important; margin-right:2px !important;">85%</span>
+            <span style="display:inline-block !important; vertical-align:middle !important; width:20px !important; height:10px !important; border:1px solid #000 !important; border-radius:2px !important; padding:1px !important; background:#fff !important; box-sizing:border-box !important;">
+                <span style="display:block !important; width:85% !important; height:100% !important; background:#24cc63 !important; border-radius:1px !important;"></span>
+            </span>
+            <span style="display:inline-block !important; vertical-align:middle !important; width:2px !important; height:4px !important; background:#000 !important; border-radius:0 1px 1px 0 !important; margin-left:-1px !important;"></span>
+        </td>
+    </tr>
+</table>
 
         <div class="row body-box-wrapper">
             <div class="col-lg-12">
@@ -364,10 +357,11 @@
         </div>
     </div>
 </div>
-<div id="back-to-top" style="position:fixed !important; bottom:25px !important; right:20px !important; width:45px !important; height:45px !important; background-color:#007bff !important; color:#fff !important; text-align:center !important; line-height:43px !important; font-size:24px !important; font-weight:700 !important; border-radius:50% !important; cursor:pointer !important; box-shadow:0 4px 12px rgba(0,0,0,0.3) !important; z-index:999999 !important; display:none; user-select:none; -webkit-tap-highlight-color:transparent; touch-action:manipulation;">&#8593;</div>
+<!-- Nút Back To Top Mới -->
+<div id="btt-btn-mobile" style="position:fixed !important; bottom:25px !important; right:20px !important; width:45px !important; height:45px !important; background:#d9534f !important; color:#fff !important; text-align:center !important; line-height:42px !important; font-size:26px !important; font-weight:bold !important; border-radius:50% !important; box-shadow:0 4px 10px rgba(0,0,0,0.3) !important; z-index:999999 !important; display:none; cursor:pointer !important;">&#8593;</div>
 
 <script>
-    // Đồng hồ thời gian thực
+    // 1. Đồng hồ thời gian thực
     function updateTime() {
         const timeDisplay = document.querySelector('.time-display');
         if (!timeDisplay) return;
@@ -380,6 +374,8 @@
     }
     setInterval(updateTime, 1000);
     updateTime();
+
+    // 2. Thêm nút Copy & Đếm số
     (function createButtons() {
         let form_containers = document.querySelectorAll(".txt-container");
         form_containers.forEach(function(container) {
@@ -417,29 +413,29 @@
             container.appendChild(count_btn);
         });
     })();
-    document.addEventListener("DOMContentLoaded", function() {
-        var btnBackToTop = document.getElementById("back-to-top");
 
-        function checkScroll() {
-            var scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-            if (scrollPosition > 150) {
-                btnBackToTop.style.display = "block";
-            } else {
-                btnBackToTop.style.display = "none";
-            }
+    // 3. Xử lý Back To Top Mới (Bắt sự kiện cuộn đa tầng)
+    var btnTop = document.getElementById("btt-btn-mobile");
+
+    function handleScroll(e) {
+        var scrolly = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || (e.target && e.target.scrollTop) || 0;
+        if (scrolly > 50) {
+            btnTop.style.setProperty("display", "block", "important");
+        } else {
+            btnTop.style.setProperty("display", "none", "important");
         }
+    }
 
-        window.addEventListener("scroll", checkScroll, { passive: true });
-        document.body.addEventListener("scroll", checkScroll, { passive: true });
+    window.addEventListener("scroll", handleScroll, true);
+    document.addEventListener("scroll", handleScroll, true);
 
-        btnBackToTop.addEventListener("click", function(e) {
-            e.preventDefault();
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
+    btnTop.addEventListener("click", function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
     });
+
+    // 4. Chặn bấm copy khi ô trống
     document.addEventListener('click', function(e) {
         if (e.target && e.target.tagName === 'BUTTON' && (e.target.innerText.trim().toUpperCase() === 'COPY' || e.target.innerText.trim().toUpperCase() === 'ĐÃ COPY')) {
             let container = e.target.closest('.txt-container') || e.target.parentElement;
