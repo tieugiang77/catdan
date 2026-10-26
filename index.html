@@ -361,7 +361,7 @@
 <div id="btt-btn-mobile" style="position:fixed !important; bottom:25px !important; right:20px !important; width:45px !important; height:45px !important; background:#d9534f !important; color:#fff !important; text-align:center !important; line-height:42px !important; font-size:26px !important; font-weight:bold !important; border-radius:50% !important; box-shadow:0 4px 10px rgba(0,0,0,0.3) !important; z-index:999999 !important; display:none; cursor:pointer !important;">&#8593;</div>
 
 <script>
-    // 1. Đồng hồ thời gian thực
+    //  Đồng hồ thời gian thực
     function updateTime() {
         const timeDisplay = document.querySelector('.time-display');
         if (!timeDisplay) return;
@@ -375,7 +375,6 @@
     setInterval(updateTime, 1000);
     updateTime();
 
-    // 2. Thêm nút Copy & Đếm số
     (function createButtons() {
         let form_containers = document.querySelectorAll(".txt-container");
         form_containers.forEach(function(container) {
@@ -414,7 +413,7 @@
         });
     })();
 
-    // 3. Xử lý Back To Top Mới (Bắt sự kiện cuộn đa tầng)
+   
     var btnTop = document.getElementById("btt-btn-mobile");
 
     function handleScroll(e) {
@@ -435,7 +434,6 @@
         document.body.scrollTop = 0;
     });
 
-    // 4. Chặn bấm copy khi ô trống
     document.addEventListener('click', function(e) {
         if (e.target && e.target.tagName === 'BUTTON' && (e.target.innerText.trim().toUpperCase() === 'COPY' || e.target.innerText.trim().toUpperCase() === 'ĐÃ COPY')) {
             let container = e.target.closest('.txt-container') || e.target.parentElement;
