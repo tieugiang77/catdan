@@ -368,7 +368,7 @@
         const minutes = String(now.getMinutes()).padStart(2, '0');
         const day = String(now.getDate()).padStart(2, '0');
         const month = String(now.getMonth() + 1).padStart(2, '0');      
-        const text = `Ngày: ${ngay}/${thang}/${nam} - Giờ: ${gio}:${phut}:${giay}`;
+       timeDisplay.textContent = `${hours}:${minutes} ${day}/${month}`;
     }
     setInterval(updateTime, 1000);
     updateTime();
