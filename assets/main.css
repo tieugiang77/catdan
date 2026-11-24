@@ -60,22 +60,3 @@ textarea.block-note {
     min-height: 140px;
 }
 
-/* Trên màn hình nhỏ / điện thoại: các khối chính xếp dọc cho rộng rãi, dễ nhìn */
-@media screen and (max-width: 768px) {
-    .tms-box .col-12 > .col-4,
-    .tms-box .col-12 > .col-6,
-    .tms-box .col-12 > .col-8 {
-        flex: 0 0 100% !important;
-        max-width: 100% !important;
-        width: 100% !important;
-        float: none !important;
-        position: static !important;
-        margin-bottom: 8px;
-    }
-
-    .title-group-top,
-    .lx-type-box {
-        position: static !important;
-        margin-bottom: 6px;
-    }
-}
