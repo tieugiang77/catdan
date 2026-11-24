@@ -368,11 +368,10 @@
         const minutes = String(now.getMinutes()).padStart(2, '0');
         const day = String(now.getDate()).padStart(2, '0');
         const month = String(now.getMonth() + 1).padStart(2, '0');      
-       timeDisplay.textContent = `${hours}:${minutes} ${day}/${month}`;
+        timeDisplay.textContent = `${hours}:${minutes} ${day}/${month}`;
     }
     setInterval(updateTime, 1000);
     updateTime();
-
 
     (function createButtons() {
         let form_containers = document.querySelectorAll(".txt-container");
