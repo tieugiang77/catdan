@@ -360,18 +360,26 @@
 <div id="btt-btn-mobile" style="position:fixed !important; bottom:25px !important; right:20px !important; width:45px !important; height:45px !important; background:#d9534f !important; color:#fff !important; text-align:center !important; line-height:42px !important; font-size:26px !important; font-weight:bold !important; border-radius:50% !important; box-shadow:0 4px 10px rgba(0,0,0,0.3) !important; z-index:999999 !important; display:none; cursor:pointer !important;">&#8593;</div>
 
 <script>
-    function updateTime() {
-        const timeDisplay = document.querySelector('.time-display');
-        if (!timeDisplay) return;
+ function capNhatThoiGian() {
         const now = new Date();
-        const hours = String(now.getHours()).padStart(2, '0');
-        const minutes = String(now.getMinutes()).padStart(2, '0');
-        const day = String(now.getDate()).padStart(2, '0');
-        const month = String(now.getMonth() + 1).padStart(2, '0');      
+        
+        // Lấy ngày/tháng/năm
+        const ngay = String(now.getDate()).padStart(2, '0');
+        const thang = String(now.getMonth() + 1).padStart(2, '0');
+        const nam = now.getFullYear();
+        
+        // Lấy giờ:phút:giây
+        const gio = String(now.getHours()).padStart(2, '0');
+        const phut = String(now.getMinutes()).padStart(2, '0');
+        const giay = String(now.getSeconds()).padStart(2, '0');
+        
+        // Hiển thị ra màn hình
         document.getElementById('ngay-gio').innerText = `Ngày: ${ngay}/${thang}/${nam} - Giờ: ${gio}:${phut}:${giay}`;
     }
-    setInterval(updateTime, 1000);
-    updateTime();
+
+    // Chạy ngay lập tức và cập nhật mỗi giây
+    capNhatThoiGian();
+    setInterval(capNhatThoiGian, 1000);
 
     (function createButtons() {
         let form_containers = document.querySelectorAll(".txt-container");
