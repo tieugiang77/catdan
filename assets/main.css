@@ -79,7 +79,7 @@ body>.container { max-width: 100% !important; width: 85% !important }
 @media only screen and (max-width: 480px) {
     .arrow_page_up { bottom: 5px; right: 5px }
 }
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 770px) {
     .tms-box .col-2 { width: 30% !important }
     .tms-box .col-10 { width: 70% !important }
     .col-4, .col-5, .col-6, .col-7, .col-8, .col-12, .col-lg-12 { padding-right: 1px !important; padding-left: 1px !important }
