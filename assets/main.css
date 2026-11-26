@@ -1,15 +1,8 @@
 html, body {
     height: auto !important;
     min-height: 100% !important;
-    overflow-x: hidden !important; /* Khóa cuộn ngang */
-    overflow-y: auto !important;   /* Mở khóa cuộn dọc */
-}
-.txt-container { 
-    text-align: right !important; 
-    margin-top: 0px !important; 
-    position: relative !important; 
-    overflow: hidden !important; 
-    padding-bottom: 5px !important; 
+    overflow-x: hidden !important; 
+    overflow-y: auto !important;   
 }
 .txt-container textarea { display: block !important; width: 100% !important; text-align: left !important; padding: 6px !important; margin-bottom: 8px !important; }
 .btnCopy, .btnCount { position: static !important; display: inline-block !important; margin-left: 8px !important; float: right !important; padding: 6px 12px !important; font-size: 13px !important; font-weight: bold !important; border-radius: 4px !important; border: none !important; color: #fff !important; cursor: pointer; box-shadow: 0 1px 2px rgba(0,0,0,0.2); height: auto !important; line-height: normal !important; }
@@ -79,10 +72,20 @@ body>.container { max-width: 100% !important; width: 85% !important }
 @media only screen and (max-width: 480px) {
     .arrow_page_up { bottom: 5px; right: 5px }
 }
-@media screen and (max-width: 770px) {
-    .tms-box .col-2 { width: 30% !important }
-    .tms-box .col-10 { width: 70% !important }
-    .col-4, .col-5, .col-6, .col-7, .col-8, .col-12, .col-lg-12 { padding-right: 1px !important; padding-left: 1px !important }
+@media only screen and (max-width: 768px) {
+    body, .container { 
+        padding-left: 12px !important;
+        padding-right: 12px !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        width: 100% !important;
+        box-sizing: border-box;
+    }
+    h1, h2, h3 {
+        margin-left: 0 !important;
+        padding-left: 10px;
+        font-size: 22px; 
+    }
 }
 @media screen and (max-width: 1200px) {
     body>.container { width: 96% !important; padding: 0 }
@@ -94,7 +97,6 @@ body>.container { max-width: 100% !important; width: 85% !important }
     .dan-3d-txt-area-half { height: 86px !important }
 }
 
-
         .col-2.bottom.text-right {
             width: 20% !important;         
             padding-right: 5px !important; 
@@ -105,77 +107,18 @@ body>.container { max-width: 100% !important; width: 85% !important }
         }
 
   body { 
-    display: block; /* Đổi từ flex thành block */
+    display: block; 
     min-height: 100vh; 
     background-color: #cbd5e1; 
     margin: 0; 
-    padding: 0; /* Bỏ padding để đỡ bị lẹm 2 bên trên mobile */
+    padding: 0; 
 }
 
-        .phone-mockup {
-            width: 1100px; 
-            height: 1012px;
-            background-color: #f1f5f9;
-            border: 12px solid #1e293b; 
-            border-radius: 46px;        
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
-            position: relative;         
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;           
-        }
-
-        .phone-notch {
-            position: absolute !important;
-            top: 0 !important;
-            left: 50% !important;
-            transform: translateX(-50%) !important;
-            width: 80px !important;
-            height: 28px !important;
-            background-color: #000000 !important; 
-            border-bottom-left-radius: 16px !important;
-            border-bottom-right-radius: 16px !important;
-            z-index: 10001 !important; 
-            display: flex !important;
-            justify-content: center !important;
-            align-items: center !important;
-        }
-        #notch-time {
-            color: #ffffff !important; 
-            font-size: 11px !important;
-            font-weight: 700 !important;
-            letter-spacing: 0.5px !important;
-        }
-
-       
-        .status-bar {
-            height: 40px !important;
-            background-color: #ffffff !important; 
-            display: flex !important;
-            justify-content: space-between !important;
-            align-items: center !important;
-            padding: 0 20px !important;
-            font-size: 12px !important;
-            font-weight: 600 !important;
-            color: #000000 !important;
-            z-index: 10000 !important;
-            position: relative !important;
-        }
-
-        .phone-content {
-            flex: 1;
-            background-color: #ffffff; 
-            overflow-y: auto !important;
-            padding: 10px 10px 30px 10px;
-            position: relative;
-        }
-        .phone-content::-webkit-scrollbar { width: 3px; }
-        .phone-content::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
   
        #back-to-top { 
     position: fixed !important;      
     bottom: 30px !important; 
-    left: 20px !important;           /* Tăng lên 20px để tránh mép vuốt của điện thoại */
+    left: 20px !important;           
     width: 52px !important;          
     height: 52px !important;         
     background-color: #007bff !important; 
@@ -187,10 +130,9 @@ body>.container { max-width: 100% !important; width: 85% !important }
     border-radius: 50% !important; 
     cursor: pointer !important; 
     box-shadow: 0 4px 12px rgba(0, 123, 255, 0.5) !important; 
-    
-    /* THÊM 2 DÒNG NÀY ĐỂ ÉP NÚT LUÔN ĐƯỢC BẤM */
-    z-index: 9999999 !important;      /* Thêm nhiều số 9 để đè lên mọi thứ */
-    pointer-events: auto !important;  /* Bắt buộc nhận sự kiện click chuột/chạm */
+
+    z-index: 9999999 !important;      
+    pointer-events: auto !important;  
     
     display: none; 
     transition: transform 0.2s ease, background-color 0.2s ease !important; 
@@ -216,10 +158,18 @@ body>.container { max-width: 100% !important; width: 85% !important }
             background-color: #94a3b8 !important;
             border-radius: 10px !important;
         }
-		.time-display {
-    text-align: center !important; /* Căn chữ ra giữa */
-    display: block !important;     /* Biến nó thành một khối độc lập */
-    width: 100% !important;        /* Trải dài hết chiều ngang màn hình */
-    margin: 10px 0 !important;     /* Thêm chút khoảng trống trên dưới cho đẹp (bạn có thể tùy chỉnh số 10px) */
-    font-weight: bold;             /* In đậm cho dễ nhìn (nếu muốn) */
+	.time-display {
+    display: block !important;     
+    flex: 1 !important;            
+    text-align: right !important; 
+    white-space: nowrap !important;
+    margin: 0 5px !important;      
+    font-weight: bold !important;
+}
+.header-list-index {
+    display: block !important;
+    border-bottom: 2px solid #555555 !important;
+    padding-bottom: 5px !important;
+    margin-bottom: 15px !important;
+    margin-top: 10px !important;
 }
